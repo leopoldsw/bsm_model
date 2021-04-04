@@ -6,7 +6,7 @@ It can be used to estimate implied volatility, greeks (delta, gemma, theta, vega
 
 ## Install
 
-`pip install bsm_model`
+`pip install bsm-model`
 
 ## Import
 

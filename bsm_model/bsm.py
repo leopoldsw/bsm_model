@@ -30,10 +30,13 @@ class BSM:
 
         if all([T, any([calculation_date, expiration_date])]):
             raise ValueError("You can either use T or (calculation_date & expiration_date)")
+        
+        # if date arguments are used, convert string to date
+        if all([calculation_date, expiration_date]):
+            calculation_date = date(calculation_date[0:4], calculation_date[5:7], calculation_date[8:10])
+            expiration_date = date(expiration_date[0:4], expiration_date[5:7], expiration_date[8:10])
 
-        calculation_date = date(calculation_date[0:4], calculation_date[5:7], calculation_date[8:10])
-        expiration_date = date(expiration_date[0:4], expiration_date[5:7], expiration_date[8:10])
-
+        # for the trading_days argument
         _days_in_year = 252 if trading_days else 365
 
         # Assign values to the class
