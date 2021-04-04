@@ -33,8 +33,8 @@ class BSM:
         
         # if date arguments are used, convert string to date
         if all([calculation_date, expiration_date]):
-            calculation_date = date(calculation_date[0:4], calculation_date[5:7], calculation_date[8:10])
-            expiration_date = date(expiration_date[0:4], expiration_date[5:7], expiration_date[8:10])
+            calculation_date = date(int(calculation_date[0:4]), int(calculation_date[5:7]), int(calculation_date[8:10]))
+            expiration_date = date(int(expiration_date[0:4]), int(expiration_date[5:7]), int(expiration_date[8:10]))
 
         # for the trading_days argument
         _days_in_year = 252 if trading_days else 365
@@ -79,7 +79,7 @@ class BSM:
             # Retrieved April 3, 2021, from http://www.jstor.org/stable/4479152
             # Maybe use this link to improve: https://www.sciencedirect.com/science/article/abs/pii/0378426695000143
             _init_value = np.sqrt(2 * np.pi / self.T) * (self.P / self.S)
-            _iv = newton(lambda sigma: self.P - self.price(sigma), _init_value)
+            _iv = newton(lambda sigma: self.P - self.price(sigma), _init_value, maxiter=50)
         elif self.method == 'brent':
             _iv = brentq(lambda sigma: self.P - self.price(sigma), -1e-6, 1)
         return _iv
