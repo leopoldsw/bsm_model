@@ -11,5 +11,5 @@ setup(name='bsm_model',
       author='Leopold W.',
       author_email='lsw@lwco.com',
       packages=find_packages(exclude=("tests", "tests_dev")),
-      install_requires=['pandas', 'numpy', 'scipy', 'datetime'],
+      install_requires=['pandas', 'numpy', 'scipy'],
       )
