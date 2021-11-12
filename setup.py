@@ -10,6 +10,6 @@ setup(name='bsm_model',
       download_url = 'https://github.com/leopoldsw/bsm_model/archive/v0.2.tar.gz',
       author='Leopold W.',
       author_email='lsw@lwco.com',
-      packages=find_packages(exclude=("tests", "tests_dev")),
+      packages=find_packages(),
       install_requires=['pandas', 'numpy', 'scipy'],
       )
